@@ -1,0 +1,79 @@
+::ng-deep .p-dropdown{
+    font-size: 12px;
+}
+
+
+::ng-deep  .p-dropdown.p-dropdown-clearable .p-dropdown-label,.p-inputtext,.p-dropdown-label, .p-dropdown-label {
+    font-size: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+::ng-deep .p-dropdown .p-dropdown-label{
+    font-size: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+::ng-deep .width-100-perc {
+    .p-dropdown {
+        width: 90% !important;
+    }
+
+}
+
+::ng-deep .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+    margin: 0;
+    padding: 0.2rem .5rem;
+    font-size: 11px !important;
+}
+
+::ng-deep .p-dropdown .p-dropdown-trigger {
+    background: #f1f1f1;
+    
+    width: 1.5rem;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.button-secondary{
+    font-size: 0.75rem;
+    font-weight: bolder;
+  cursor: pointer;
+
+  background: linear-gradient(#FFFFFF, #ECECEC) !important;
+  color: #424242 !important;
+  border: solid 1px #ced4da !important;
+  border-radius: 0.3rem;
+  border-left: none;
+}
+label.label input[type="file"] {
+    position: absolute;
+    top: -1000px;
+   
+  }
+/* Add this CSS to your component's CSS file or a global style file */
+
+.excel-style-table {
+    border-collapse: collapse; /* Collapse table borders into a single line */
+    width: 100%; /* Make the table full width */
+  }
+  
+  .excel-style-table th, .excel-style-table td {
+    border: 1px solid #000; /* Add a 1px solid black border to table cells */
+    padding: 5px; /* Adjust padding for spacing */
+    text-align: center; /* Center-align text in table cells */
+  }
+  
+  #pop{
+    height: 120px;
+  }
+  
+  /* Define row height (adjust as needed) */
+  .excel-style-table tr {
+    height: 10px;
+  }
+  
+  /* Define cell width (adjust as needed) */
+  .excel-style-table th, .excel-style-table td {
+    width: 100px;
+  }
+  
+  

@@ -1,0 +1,155 @@
+{
+    "data": 
+    [
+        {
+            "style":"color:'red'",
+            "label": "Documents",
+            "data": "Documents Folder",
+            "expanded":true,
+            "leaf":true,
+            
+            "children": [{"label": "Expenses.doc","partialSelected":true,"droppable":false, "icon": "pi pi-file", "data": "Expenses Document"}, {"droppable":false,"label": "Resume.doc", "leaf":true, "icon": "pi pi-file", "data": "Resume Document"}]
+          
+        },
+        {
+            "label": "Pictures",
+            "data": "Pictures Folder",
+            "expandedIcon": "pi pi-folder-open",
+            "collapsedIcon": "pi pi-folder",
+            "children": [
+                {"label": "barcelona.jpg", "icon": "pi pi-image", "data": "Barcelona Photo"},
+                {"label": "logo.jpg", "icon": "pi pi-image", "data": "PrimeFaces Logo"},
+                {"label": "primeui.png", "icon": "pi pi-image", "data": "PrimeUI Logo"}]
+        },
+        {
+            "label": "Movies",
+            "data": "Movies Folder",
+            "expandedIcon": "pi pi-folder-open",
+            "collapsedIcon": "pi pi-folder",
+            "children": [{
+                    "label": "Al Pacino",
+                    "data": "Pacino Movies",
+                    "children": [{"label": "Scarface", "icon": "pi pi-video", "data": "Scarface Movie"}, {"label": "Serpico", "icon": "pi pi-video", "data": "Serpico Movie"}]
+                },
+                {
+                    "label": "Robert De Niro",
+                    "data": "De Niro Movies",
+                    "children": [{"label": "Goodfellas", "icon": "pi pi-video", "data": "Goodfellas Movie"}, {"label": "Untouchables", "icon": "pi pi-video", "data": "Untouchables Movie"}]
+                }]
+        }
+    ]
+
+    ,
+    "mainData":[{"id":2,"name":"HR activity","level":1,"sequence":1,"description":null,"subActivity":[{"id":7,"name":"HR abcd activity","level":2,"sequence":2,"description":null},{"id":8,"name":"HR 1234 activity","level":2,"sequence":2,"description":null},{"id":9,"name":"HR test activity","level":2,"sequence":2,"description":null},{"id":62,"name":"Activity 11","level":2,"sequence":5,"description":"Testing  11"},{"id":21,"name":"TEST 1 New Act","level":2,"sequence":6,"description":"testing123"},{"id":65,"name":"Latest testing 1","level":1,"sequence":11,"description":"Testing descriotion 1"}]},{"id":11,"name":"ABCD Dept","level":1,"sequence":1,"description":null,"subActivity":[{"id":13,"name":"ABCD sub2 Dept","level":2,"sequence":2,"description":null},{"id":14,"name":"ABCD sub3 Dept","level":2,"sequence":3,"description":null},{"id":75,"name":"gigsLabTesting111222","level":2,"sequence":5,"description":"Testing"}]},{"id":27,"name":"newact 123","level":1,"sequence":6,"description":null,"subActivity":[]},{"id":1,"name":"IT dev","level":1,"sequence":1,"description":"hJsdhjdaks\nasjdnjasdjasd\nbasdbasndb","subActivity":[{"id":5,"name":"IT infrastructure activity","level":3,"sequence":3,"description":null},{"id":6,"name":"IT Offshore activity","level":3,"sequence":3,"description":null},{"id":64,"name":"7tesdting","level":2,"sequence":5,"description":"newwww"},{"id":16,"name":"Test Activity","level":2,"sequence":4,"description":"Testing Description"}]},{"id":15,"name":"gigslab","level":1,"sequence":1,"description":"TTK123","subActivity":[]},{"id":76,"name":"ActNew3435","level":1,"sequence":9,"description":null,"subActivity":[]},{"id":24,"name":"UItesting","level":1,"sequence":4,"description":"xcvcxvxcv","subActivity":[]},{"id":74,"name":"Testing 8","level":1,"sequence":14,"description":null,"subActivity":[{"id":66,"name":"Testing 2","level":2,"sequence":1,"description":"TEsting 2 to testing 8"}]},{"id":26,"name":"JINESSH","level":1,"sequence":5,"description":"latest Descriptin Rada testing","subActivity":[]},{"id":65,"name":"Latest testing 1","level":1,"sequence":11,"description":"Testing descriotion 1","subActivity":[]},{"id":68,"name":"testing3","level":1,"sequence":12,"description":null,"subActivity":[]},{"id":69,"name":"testing3","level":1,"sequence":13,"description":null,"subActivity":[]},{"id":77,"name":"Testing 3456","level":1,"sequence":10,"description":"Testing 3456 Tesing Post Api","subActivity":[]}],
+    "getByDetls":{
+        "activityResponse": {
+            "id": 77,
+            "name": "Testing 3456",
+            "level": 1,
+            "sequence": 10,
+            "description": "Testing 3456 Tesing Post Api",
+            "functionId": 1,
+            "functionGroupId": 1,
+            "bgColor": "#8B4000",
+            "parentActivity": null,
+            "childActivity": []
+        },
+        "activityId": 77,
+        "level": 1,
+        "activityName": "Testing 3456",
+        "description": "Testing 3456 Tesing Post Api",
+        "sequence": 10,
+        "currentCapabilityPer": 36,
+        "effortInDays": 34,
+        "durationInDays": 35,
+        "priority": {
+            "id": 1,
+            "name": "Must Have"
+        },
+        "function": {
+            "id": 1,
+            "name": "Asset Management"
+        },
+        "parentActivity": null,
+        "phaseStartActivity": {
+            "id": 77,
+            "name": "Testing 3456"
+        },
+        "phaseEndActivity": {
+            "id": 77,
+            "name": "Testing 3456"
+        },
+        "accountability": {
+            "id": 1,
+            "name": "Admin User"
+        },
+        "deliverableType": {
+            "id": 1,
+            "name": "None"
+        },
+        "modelRasci": [
+            {
+                "id": 42,
+                "activityId": 77,
+                "modelId": 2,
+                "modelName": "Enables Model",
+                "clientPartnerRole": "C",
+                "gloplaxRole": "R"
+            }
+        ],
+        "upstreamActivity": [
+            {
+                "id": 32,
+                "name": "new test 281122 sub1"
+            },
+            {
+                "id": 33,
+                "name": null
+            },
+            {
+                "id": 34,
+                "name": "Painting"
+            }
+        ],
+        "downstreamActivity": [
+            {
+                "id": 31,
+                "name": "test281122 sub 1 activity"
+            },
+            {
+                "id": 32,
+                "name": "new test 281122 sub1"
+            },
+            {
+                "id": 33,
+                "name": null
+            }
+        ],
+        "contributingFunction": [
+            {
+                "id": 52,
+                "name": "testing 1"
+            },
+            {
+                "id": 53,
+                "name": "new Sub act"
+            },
+            {
+                "id": 54,
+                "name": "new 2"
+            }
+        ]
+    }
+    ,
+    "Priority":[ {"id": 1,
+    "name": "Must Have"}],
+    "ParentActivity":[{"id":1,"name":"IT dev","level":1,"sequence":1,"description":"hJsdhjdaks\nasjdnjasdjasd\nbasdbasndb"},{"id":2,"name":"HR activity","level":1,"sequence":1,"description":null},{"id":3,"name":"Legal activity","level":2,"sequence":3,"description":null},{"id":4,"name":"Legal Family advice activity","level":3,"sequence":3,"description":null},{"id":5,"name":"IT infrastructure activity","level":3,"sequence":3,"description":null},{"id":6,"name":"IT Offshore activity","level":3,"sequence":3,"description":null},{"id":7,"name":"HR abcd activity","level":2,"sequence":2,"description":null},{"id":8,"name":"HR 1234 activity","level":2,"sequence":2,"description":null},{"id":9,"name":"HR test activity","level":2,"sequence":2,"description":null},{"id":10,"name":"IT test activity","level":2,"sequence":2,"description":null},{"id":11,"name":"ABCD Dept","level":1,"sequence":1,"description":null},{"id":12,"name":"ABCD sub1 Dept","level":4,"sequence":2,"description":"NA"},{"id":13,"name":"ABCD sub2 Dept","level":2,"sequence":2,"description":null},{"id":14,"name":"ABCD sub3 Dept","level":2,"sequence":3,"description":null},{"id":15,"name":"gigslab","level":1,"sequence":1,"description":"TTK123"},{"id":16,"name":"Test Activity","level":2,"sequence":4,"description":"Testing Description"},{"id":17,"name":"Test sub 1 Activity","level":2,"sequence":1,"description":null},{"id":18,"name":"New Activity","level":3,"sequence":2,"description":"Testing134"},{"id":19,"name":"New sub 1 Activity","level":2,"sequence":1,"description":null},{"id":20,"name":"New sub 222 Activity","level":2,"sequence":2,"description":null},{"id":21,"name":"TEST 1 New Act","level":2,"sequence":6,"description":"testing123"},{"id":22,"name":"TEST sub1 New Act","level":2,"sequence":1,"description":null},{"id":23,"name":"TEST sub1 New sub1 Act","level":2,"sequence":1,"description":null},{"id":24,"name":"UItesting","level":1,"sequence":4,"description":"xcvcxvxcv"},{"id":26,"name":"JINESSH","level":1,"sequence":5,"description":"latest Descriptin Rada testing"},{"id":27,"name":"newact 123","level":1,"sequence":6,"description":null},{"id":31,"name":"test281122 sub 1 activity","level":2,"sequence":1,"description":null},{"id":32,"name":"new test 281122 sub1","level":2,"sequence":2,"description":null},{"id":34,"name":"Painting","level":2,"sequence":3,"description":null},{"id":45,"name":"JineeshKR","level":2,"sequence":4,"description":null},{"id":46,"name":"latest one","level":2,"sequence":5,"description":null},{"id":50,"name":"Testing Fan","level":2,"sequence":4,"description":null},{"id":51,"name":"testing 123","level":2,"sequence":1,"description":null},{"id":52,"name":"testing 1","level":2,"sequence":1,"description":null},{"id":53,"name":"new Sub act","level":2,"sequence":1,"description":null},{"id":54,"name":"new 2","level":2,"sequence":2,"description":null},{"id":55,"name":"Act 3","level":3,"sequence":1,"description":null},{"id":56,"name":"Act-lev 4","level":4,"sequence":1,"description":null},{"id":57,"name":"Add le5","level":5,"sequence":1,"description":null},{"id":58,"name":"act se2","level":2,"sequence":2,"description":null},{"id":59,"name":"actseq3","level":2,"sequence":3,"description":null},{"id":60,"name":"act se2","level":3,"sequence":2,"description":null},{"id":61,"name":"actse 2","level":4,"sequence":2,"description":null},{"id":62,"name":"Activity 11","level":2,"sequence":5,"description":"Testing  11"},{"id":63,"name":"ne act","level":4,"sequence":1,"description":null},{"id":64,"name":"7tesdting","level":2,"sequence":5,"description":"newwww"},{"id":65,"name":"Latest testing 1","level":1,"sequence":11,"description":"Testing descriotion 1"},{"id":66,"name":"Testing 2","level":2,"sequence":1,"description":"TEsting 2 to testing 8"},{"id":67,"name":"testing2.1","level":2,"sequence":1,"description":null},{"id":68,"name":"testing3","level":1,"sequence":12,"description":null},{"id":69,"name":"testing3","level":1,"sequence":13,"description":null},{"id":70,"name":"Testing4","level":2,"sequence":3,"description":"Testing 4 to Testing 2"},{"id":71,"name":"testing 5","level":2,"sequence":3,"description":"Testing 5 to testing 2"},{"id":72,"name":"Activity 6","level":2,"sequence":5,"description":"Activity 6 to Activity 2"},{"id":73,"name":"Activity 7","level":2,"sequence":5,"description":"Testing 7 to Testing 2"},{"id":74,"name":"Testing 8","level":1,"sequence":14,"description":null},{"id":75,"name":"gigsLabTesting111222","level":2,"sequence":5,"description":"Testing"},{"id":76,"name":"ActNew3435","level":1,"sequence":9,"description":null},{"id":77,"name":"Testing 3456","level":1,"sequence":10,"description":"Testing 3456 Tesing Post Api"}],
+    "Owner":[],
+    "PhaseStart":[],
+    "PhaseEnd":[],
+    "Accountability":[],
+    "DeliverableType":[],
+    "modelMapping":[],
+    "UpstreamDependency":[],
+    "DownstreamDependency":[]
+}

@@ -1,0 +1,138 @@
+::ng-deep .p-dropdown {
+    font-size: 12px;
+}
+
+::ng-deep .p-dropdown.p-dropdown-clearable .p-dropdown-label,
+.p-inputtext,
+.p-dropdown-label,
+.p-dropdown-label {
+    font-size: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+::ng-deep .p-dropdown .p-dropdown-label {
+    font-size: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+::ng-deep .width-100-perc {
+    .p-dropdown {
+        width: 90% !important;
+    }
+
+}
+
+::ng-deep .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+    margin: 0;
+    padding: 0.2rem .5rem;
+    font-size: 11px !important;
+}
+
+::ng-deep .p-dropdown .p-dropdown-trigger {
+    background: #f1f1f1;
+
+    width: 1.5rem;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+table {
+    width: 60%; 
+    height: 10%;
+  }
+  
+  th, td {
+    font-size: small;
+    padding: 8px; /* Add padding to cells */
+    text-align: center; /* Center text */
+    border: 1px solid #ccc;
+     /* Add border to cells */
+  }
+  
+  /* Style header cells differently */
+  th {
+    background-color: #f2f2f2; /* Background color for header cells */
+    font-weight: bold; /* Bold text for headers */
+  }
+  
+  #i{
+    box-shadow: 2px 2px 2px 2px #bebebe;
+    background-color: rgb(220, 220, 221);
+  }
+  #i1{
+    margin-left: 10px;
+    background-color: rgb(220, 220, 221);
+
+    box-shadow: 2px 2px 2px 2px #bebebe;
+  }
+  .add{
+    margin-left: 520px;
+    width: 400px;
+    height: 10px;
+    margin-top: -40px;
+    position: absolute;
+  }
+  #in{
+padding: 2px;
+width: 200px;
+  }
+ ::ng-deep .p-accordion p-accordiontab:last-child .p-accordion-header:not(.p-highlight) .p-accordion-header-link {
+    padding-left: 7px;
+    height: 30px;
+    width: 30px;
+    padding: -16px;
+    border-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+}
+
+::ng-deep .p-accordion .p-accordion-header:not(.p-disabled).p-highlight .p-accordion-header-link {
+  padding-left: 7px;
+  height: 30px;
+  width: 30px;
+  padding: -16px;
+  border-radius: 40px;
+  border-bottom-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+}
+#btn{
+  width: 30px;
+  color: #afaeae;
+  padding: 4px;
+  border: none;
+  margin-left:4px;
+  cursor: pointer;
+}
+#btn:hover{
+  background-color: #e2e2e2;
+}
+
+#p{
+  font-size: 13px;
+}
+#thead{
+  width: 30px;
+}
+
+th{
+  font-size: 15px;
+}
+// ::ng-deep .custom-table {
+//   height: 700px ; /* Adjust the max height as per your requirements */
+//   overflow: hidden; 
+//   width: 600px;/* Add scrollbars if the content exceeds the max height */
+// }
+::ng-deep .p-breadcrumb .p-menuitem-link{
+  box-shadow: none !important;
+  }
+  .min-height-container{
+     
+    min-height: calc(100vh - 142px);
+    max-height: calc(100vh - 142px);
+    // overflow-y: auto;
+}
+::ng-deep .p-col-2 {
+  margin-left: 122px;
+  width: 13.6667%;
+}

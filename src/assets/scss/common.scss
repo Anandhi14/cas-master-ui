@@ -1,0 +1,111 @@
+.text-overflow-ellipsis{
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+.common-line-height{
+line-height: 23px;
+}
+
+.common-header-glove-font{
+  font-size: 30px;
+    padding-top: 30px;
+    font-family: poppins;
+    font-weight: 400;
+    line-height: 36px;
+}
+
+.common-sub-header-glove-font{
+  font-size: 14px;
+  font-weight: bold;
+  color: #828282;
+  padding: 0px 0px;
+  line-height: 20px;
+}
+
+.common-sub-header-glove-font-nobold{
+  font-size: 14px;
+  font-weight: normal;
+  color: #828282;
+  padding: 0px 0px;
+  line-height: 20px;
+}
+.common-text-glove-font-size{
+  font-size: 13px;
+  padding: 10px 10px 0 0;
+  font-weight: 400;
+  font-family: 'Montserrat';
+
+}
+
+
+.para-sub {
+  font-size: 11px;
+  padding: 6px 0 0 0;
+  line-height: 14px;
+  color: #828282;
+  margin-bottom: 1px;
+  font-family: 'Montserrat';
+}
+
+
+.common-text-glove-font-para{
+  font-size: 11px;
+  line-height: 14px;
+  padding: 10px 10px 0 0;
+  font-weight: 400;
+  font-family: "Montserrat";
+  color: #828282;
+}
+.common-text-glove-font{
+  font-size: 13px;
+    line-height: 23px;
+    padding: 10px 10px 0 0;
+    font-weight: 400;
+    font-family: 'Montserrat';
+}
+.table-content{
+  font-size: 11px;
+    padding: 0px 0px 0 0;
+    font-weight: 400;
+    font-family: 'Montserrat';
+}
+.common-box-padding{
+  padding: 15px 15px 15px 15px;
+}
+
+.hiddenScroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hiddenScroll {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.slide-half {
+  padding: 3px 8px;
+ display: flex;
+ border-radius: 4px;
+ background: #a8a8a8;
+}
+.slide-half p{
+color: #3A70B6;
+}
+
+.slide-half p {
+  margin: 0;
+  font-weight: bold;
+}
+.slide-content {
+  display: flex;
+  justify-content: flex-start;
+  gap: 4px;
+  align-items: center;
+}
+.active1 {
+  // color: rgb(223, 223, 233);
+  padding: 3px 14px;
+  background-color: #FEC932;
+}

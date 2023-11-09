@@ -1,0 +1,19 @@
+{
+  "functionality": [
+    {
+      "id": 1,
+      "code": "VIEW",
+      "name": "View mode"
+    },
+    {
+      "id": 2,
+      "code": "RESTRICT",
+      "name": "Edit mode"
+    },
+    {
+      "id": 3,
+      "code": "Edit",
+      "name": "Edit mode"
+    }
+  ]
+}

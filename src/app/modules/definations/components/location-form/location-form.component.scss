@@ -1,0 +1,54 @@
+::ng-deep .p-dropdown{
+    font-size: 12px;
+}
+::ng-deep  .p-dropdown.p-dropdown-clearable .p-dropdown-label,.p-inputtext,.p-dropdown-label, .p-dropdown-label {
+    font-size: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+::ng-deep .p-dropdown .p-dropdown-label{
+    font-size: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+::ng-deep .width-100-perc {
+    .p-dropdown {
+        width: 90% !important;
+    }
+
+}
+
+::ng-deep .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+    margin-left: 0;
+    font-size: 11px !important;
+}
+
+::ng-deep .p-dropdown .p-dropdown-trigger {
+    background: #f1f1f1;
+    
+    width: 1.5rem;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.button-secondary{
+    font-size: 0.75rem;
+    font-weight: bolder;
+  cursor: pointer;
+
+  background: linear-gradient(#FFFFFF, #ECECEC) !important;
+  color: #424242 !important;
+  border: solid 1px #ced4da !important;
+  border-radius: 0.3rem;
+  border-left: none;
+}
+label.label input[type="file"] {
+    position: absolute;
+    top: -1000px;
+   
+  }
+  ::ng-deep .custom-dropdown .ui-dropdown-item {
+    text-align: left;
+  }
+  ::ng-deep .p-breadcrumb .p-menuitem-link{
+    box-shadow: none !important;
+    }

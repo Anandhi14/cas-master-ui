@@ -1,0 +1,36 @@
+
+<div class="container">
+    
+    <div class="p-d-flex p-jc-between p-ai-center p-mb-0" style="padding:0px 11px">
+        <div class="p-d-flex p-col-11" style="align-items: center; ">
+            <span class="font-content breadcrumb-guide-label p-mr-1 p-d-flex"> 
+                <span
+                class="primaryColor "><b class="p-mr-1"  [routerLink]="'/home'">GPX</b></span>  
+            <p-breadcrumb  class="p-p-0 p-ml-1 breadcrumb"  [model]="menuItems"></p-breadcrumb>
+            
+            </span>
+        </div>
+        <div style="display: flex;align-items: center;">
+            <i  class="pi pi-plus-circle p-ml-3" style="font-size: 1.5rem;color: #CFCFCF;" tooltipPosition="top"
+                pTooltip="Add" ></i>
+        </div>
+    </div>
+    <div>
+        <p-toast [preventOpenDuplicates]="true"></p-toast>
+    </div>
+    <div class="min-height-container"  >
+        <div class="p-d-flex p-flex-wrap p-col-12  p-d-flex p-flex-column p-flex-md-row " style="    
+        overflow: auto; row-gap:5px;">
+        <div *ngFor="let item of ItemList; let i = index" class="p-lg-3 p-md-4 p-sm-12 p-p-2">
+            <!-- <div *ngFor="let iteam of modelList| sortBy:'asc':'activitySequence' ; let i = index" class="p-lg-3 p-md-4 p-sm-12 p-p-2 "> -->
+            <!-- <div *ngFor="let iteam of modelList|sortBy:'asc':'activitySequence' ; let i = index" class="p-lg-3 p-md-4 p-sm-12 p-col-12 "> -->
+                <!-- <app-card-iteam [model]="iteam" [sequnceCount]="sequnceCount" [modelListArray]="modelList"  [searchActText]="searchActivityText" 
+                    (reloadData)="reloadData($event)" [isEditMode]="isEditMode" (showChild)="showSubChild($event)" [styleOBJ]="iteam.opacity"
+                    [labelLetter]="i + (itemsPerPage * (currentPage - 1))" [restricMessage]="restricMessage" [color]="iteam.color" [itemName]=item.name>
+                </app-card-iteam> -->
+                <app-card [itemName]=item [labelLetter]="i" [page]="'personamain'"></app-card>
+            </div>
+         
+        </div>
+    </div>
+    </div>

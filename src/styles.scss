@@ -1,0 +1,206 @@
+/* You can add global styles to this file, and also import other style files */
+@import "assets/scss/index.scss";
+@import "primeicons/primeicons.css";
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200&display=swap" );
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;1,600&display=swap");
+
+* {
+    font-family: 'Montserrat';
+    // color: #424242;
+    margin: 0;
+    padding: 0px;
+        box-sizing: border-box;
+}
+.font_poppins
+{
+    font-family: 'Poppins', sans-serif;
+}
+div p{
+    color:$color-font;
+
+}
+ul {
+    color:$color-font;
+
+}
+ol {
+    color:$color-font;
+
+}
+h3{
+    color:$color-font;
+
+}
+.font-header {
+    font-size: 12px;
+    font-weight: 700;
+    color:$color-font;
+}
+.font-header-commen {
+    font-size: 13px;
+    font-weight: 700;
+   
+}
+.font-content {
+    font-size: 12px;
+    font-weight:normal;
+    color: $color-font;
+}
+.font-sub-content {
+    font-size: 11px;
+    color:$color-font;
+}
+
+
+.text-truncate {
+    overflow: hidden;
+    text-overflow:  ellipsis ;
+    white-space: nowrap;
+}
+.text-truncate-para {
+    overflow: hidden;
+    text-overflow:  ellipsis ;
+  
+}
+.pointer{
+    cursor: pointer;
+}
+
+.tooltip{
+  
+   
+    color: red;
+}
+.container {
+    position: relative;
+    
+}
+::ng-deep .p-tooltip .p-tooltip-text {
+
+    background:#30477a !important;
+
+    font-size: 11px;
+
+}
+
+.pi-chevron-right:before {
+    content: "\e901\e901";
+}
+
+::ng-deep .route-bar-breadcrumb {
+    white-space: nowrap;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .error{
+    font-size: .8rem;
+    color:$color-error;
+  }
+
+body {
+ 
+    background: transparent url(./assets/images/bg.png) 0% 0% no-repeat padding-box;
+}
+
+.main-wrapper{
+  padding-left: 35px;
+  padding-right: 35px;
+  height: 100vh;
+  padding-left: 139px;
+  padding-right: 139px
+
+}
+.errorFont{
+    font-size: 11px !important;
+}
+/* Media Query for Tablets Ipads portrait mode */
+@media (max-width: 1024px){
+    .main-wrapper{
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+}
+
+.menu-link {
+    color: #2559CD !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: Montserrat;
+    font-size: 12px;
+    padding-top: 20px;
+    padding-bottom: 14px;
+}
+  #nav-icon3 span:nth-child(2), #nav-icon3 span:nth-child(1) {
+    top: 0px;
+    left: 50%;
+    width: 50%;
+  }
+  
+  #nav-icon3 span:nth-child(3), #nav-icon3 span:nth-child(4)  {
+    top: 6px;
+  }
+  
+  #nav-icon3 span:nth-child(5),#nav-icon3 span:nth-child(6) {
+    top: 12px;
+    width: 50%;
+  }
+  .header-right{
+    display: flex;
+    gap: 18px;
+  }
+  .primaryColor{
+  color: blue ;
+  font-weight: bold;
+  cursor: pointer;
+  }
+
+
+  @media (max-width:1024px ) {
+    .header{
+        height: 50px !important;
+    }
+  }
+
+
+  ::ng-deep .p-tooltip .p-tooltip-text {
+    background: #30477a !important;
+  
+    font-size: 11px !important;
+  }
+  ::ng-deep .p-breadcrumb{
+    padding:0 !important;
+    border:none !important;
+    font-size: 0.75rem !important;
+  }
+  ::ng-deep .headerComponent .pi-chevron-right:before {
+    content: "|" !important;
+ 
+  
+   
+}
+.breadcrumb{
+  cursor:pointer;
+}
+
+
+  
+::ng-deep .p-breadcrumb ul li.p-breadcrumb-chevron:before{
+  content: "|";
+  position: relative;
+  top: -3px;
+  left: 0px;
+  font-size: 13px;
+  opacity: 1;
+  color: black;
+}
+::ng-deep .p-breadcrumb .p-menuitem-link{
+box-shadow: none !important;
+}
+  
+.min-height-container{
+     
+  min-height: calc(100vh - 142px);
+  max-height: calc(100vh - 142px);
+  // overflow-y: auto;
+}

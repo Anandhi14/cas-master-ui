@@ -1,0 +1,32 @@
+
+<p-card class="task-bucket  pointer "  [ngStyle]=styleOBJ  >
+    <ng-template pTemplate="header">
+        <div class="iteam-count-wrapper ">
+             <!-- {{model?.activitySequence}} -->
+            <div class="iteam-count pointer" (click)="childIteamClik(itemName.name)" *ngIf="!notShowchild">
+             {{itemName.childCount ? itemName.childCount :0}}
+            </div>
+            <div class="iteam-count pointer" *ngIf="notShowchild">
+             {{0}}
+            </div>
+        </div>
+        <header class="font-header header-wraper" >
+            <div class="p-d-flex " (click)="onNameClick(10)">
+                <div class="p-col-10 p-p-0 p-d-flex">
+                    <span class="p-col-auto p-p-0">
+                        <button pButton label="{{labelLetter + 1}}" class="button-sigle-later butn-white-font"
+                            iconPos="left"  style="min-width: 38px;
+                            max-width: 38px;"></button>
+                    </span>
+                    <!-- <span class="p-ml-2 text-truncate p-col p-p-0 font-box-header " tooltipPosition="top" pTooltip='activityName'style="color:#2f4a8e !important ;">{{itemName}}</span>  -->
+                </div>
+            </div>
+        </header>
+    </ng-template>
+    <div class="para-container p-mt-1 p-mb-2  "  (click)="onNameClick(10)">
+        <span class="p-ml-2 text-truncate p-col p-p-0 font-box-header "(click)="onNameClick(10)">{{itemName.name}}</span> 
+    </div>
+
+</p-card>
+
+<!-- <app-process-master *ngIf="showActivityDetailPopup" [isEditMode]="isEditMode" [ProcesId]="1" ></app-process-master> -->
