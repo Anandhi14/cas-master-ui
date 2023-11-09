@@ -1,0 +1,48 @@
+<div class="container" *ngIf=" showProcessMaster==false" >
+    
+    <div class="p-d-flex p-jc-between p-ai-center p-mb-0" style="padding:0px 11px">
+        <div class="p-d-flex p-col-11" style="align-items: center; ">
+            <span class="font-content breadcrumb-guide-label p-mr-1 p-d-flex"> 
+                <span
+                class="primaryColor "><b class="p-mr-1">GPX</b></span> | 
+            <p-breadcrumb  class="p-p-0 p-ml-1 breadcrumb"  [model]="menuItems"></p-breadcrumb>
+            
+            </span>
+        </div>
+        <div style="display: flex;align-items: center;">
+            <i  class="pi pi-plus-circle p-ml-3" style="font-size: 1.5rem;color: #CFCFCF;" tooltipPosition="top"
+                pTooltip="Add" (click)="onAddClick()" ></i>
+        </div>
+    </div>
+    <div>
+        <p-toast [preventOpenDuplicates]="true"></p-toast>
+    </div>
+    <div class="min-height-container">
+        <div class="p-d-flex p-flex-wrap p-col-12 p-d-flex p-flex-column p-flex-md-row" style="overflow: auto; row-gap: 5px;">
+          <div *ngFor="let item of displayedMetricsList; let i = index" class="p-lg-3 p-md-4 p-sm-12 p-p-2">
+            <app-card [itemName]="item" [labelLetter]="i + (itemsPerPage * (currentPage - 1))" [page]="'LocationList'" (cardClicked)="onCardClick($event)"></app-card>
+          </div>
+        </div>
+      </div>
+        <!-- Left navigation button -->
+        <button *ngIf="currentPage > 1" (click)="navigatePage(-1)" class="p-button p-button-secondary p-button-outlined p-mr-2"  style="position: absolute;
+            left: -1%;
+            top: 46%;
+            transform: translate(-100%,-46%);
+            border:none !important;
+        padding: 0 !important;">
+         <i class="pi  pi-angle-left" style="font-size: 66px; color: #4c4c4c"></i>
+        </button>
+      
+        <!-- Right navigation button -->
+        <button *ngIf="currentPage < totalPages" (click)="navigatePage(1)" class="p-button p-button-secondary p-button-outlined" style="position: absolute;
+        left: 106%;
+        top: 46.5%;
+        transform: translate(-106%,-50%);
+        border:none !important;
+        padding: 0 !important;">
+          <i class="pi pi-angle-right" style="font-size: 66px; color: #4c4c4c"></i>
+        </button>
+    </div>
+    <app-location-form *ngIf=" showProcessMaster==true" (saved)="closePopupMaster()" (closed)="closePopupMaster()" [showPopup]="showProcessMaster" [model]="SlectedModel" ></app-location-form>
+    <app-loader *ngIf="loader"></app-loader>

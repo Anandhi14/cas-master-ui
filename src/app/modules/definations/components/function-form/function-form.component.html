@@ -1,0 +1,105 @@
+<div class="p-d-flex p-jc-between p-ai-center p-mb-0" style="padding:0px 11px">
+    <div class="p-d-flex p-col-11" style="align-items: center; ">
+        <span class="font-content breadcrumb-guide-label p-mr-1 p-d-flex">
+            <span class="primaryColor "><b class="p-mr-1" [routerLink]="'/home'">GPX</b></span> |
+            <p-breadcrumb class="p-p-0 p-ml-1 breadcrumb" [model]="menuItems"></p-breadcrumb>
+
+        </span>
+    </div>
+    <div style="display: flex;align-items: center;">
+        <i class="pi pi-plus-circle p-ml-3" style="font-size: 1.5rem;color: #CFCFCF; margin-left: 20px;" tooltipPosition="top"
+            pTooltip="Add"></i>
+    </div>
+</div>
+<div>
+    <p-toast [preventOpenDuplicates]="true"></p-toast>
+</div>
+<div #processDetailPopup class="p-pr-4 p-pl-4 p-pt-2 p-pb-2 p-mt-1 p-mb-1 p-shadow-4 ">
+    <div class="p-d-flex p-flex-wrap p-col-12  p-d-flex p-flex-column p-flex-md-row p-jc-between "
+        style="position: relative;">
+        <div #containerLeft class="p-lg-6 p-md-12 p-pl-0 p-pr-3  p-pt-0 p-pb-0 p-mt-3 ">
+            <div id="functiondetails">
+            <div class="p-col-12 p-p-1 p-d-flex p-flex-column p-flex-md-row" style="align-items: center !important;">
+                <div class=" p-col-3 p-p-0 p-mr-1 font-header text-center "> Function Name</div>
+                <div class=" p-col-9 p-p-0"><input [(ngModel)]="functionName" style="width: 100%;" type="text"
+                        pInputText>
+                </div>
+            </div>
+            <div class="p-col-12 p-p-1 p-d-flex p-flex-column p-flex-md-row">
+                <div class=" p-col-3 p-p-0 p-mr-1 font-header text-center ">Description</div>
+                <div class=" p-col-9 p-p-0" style="padding: 10px;     border: 1px solid #ede6e6;">
+                    <div [ngStyle]="{'width':'100%'}" class="common-font-size">
+                        <textarea pInputText type="text" class=" p-py-1  border-color text-area" maxlength="200"
+                            [(ngModel)]="functionDescription"
+                            style="max-height:100%; overflow: auto;  height:100%;width: 100%;max-width: 100%;"
+                            rows="4"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="add">
+            <button style="color: white !important; background-color: #2529cd; height:25px;font-size: small; "
+                label="ADD" class="p-col-2  font-header-commen add-activity" pButton type="button" (click)="adddata()">
+            </button>
+        </div>
+        <br>
+        <div style="height: 300px; overflow-y: auto ; width:600px;">
+            <p-table [value]="data" [tableStyle]="{ 'min-width': '10rem' }" id="table" styleClass="p-datatable-gridlines " dataKey="name">
+                <ng-template pTemplate="header">
+                    <tr id="thead">
+                        <th class="font-header" >FunctionGroup</th>
+                        <th class="font-header"  >SubFunctionGroup</th>
+                    </tr>
+                    <td>
+                        <p-dropdown class="custom-dropdown" [(ngModel)]="selectedDropdownValues"
+                        [options]="yourDropdownOptionsArray" placeholder="---Select Function---">
+                      </p-dropdown>
+                    </td>
+                    <td>
+                        <input type="text" pInputText [(ngModel)]="inputData" placeholder="Enter the Subfunction" />
+                        <button id="btn" (click)="addItemToSubfunctionGroup()"><i class="pi pi-plus"></i></button>
+                    </td>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-isExpanded="expanded" let-rowIndex="rowIndex" class="common-font-size">
+                    <tr>
+                        <td>
+                            <span class="font-bold"> {{rowData.name}}</span>
+                        </td>
+                        <td>
+                            <span> {{ list[rowIndex]?.name}}</span> 
+                               
+                        </td>
+                            <button type="button" pButton pRipple [pRowToggler]="rowData"
+                                class="p-button-text p-button-rounded p-button-plain" (click)="shouldShowExpandedIcon(rowData)"
+                                [icon]="isExpanded ? 'pi pi-angle-down' : 'pi pi-angle-right'"
+                                ></button>
+                    </tr>
+                </ng-template>
+                    <ng-template pTemplate="rowexpansion" let-rowData let-rowIndex="rowIndex" class="common-font-size">
+                        <tr *ngIf="expandedRowId === rowData.id">
+                            <td colspan="7">
+                                <div class="p-3" >
+                                    <p-table [value]="subgrouplist" dataKey="id">
+                                <ng-template  pTemplate="body" let-item>
+                                   <p> {{item}}</p>
+                                   </ng-template>
+                          </p-table>
+            </div>
+            </td>
+            </tr>
+                    </ng-template>
+            </p-table>
+        </div>
+    <!-- <div class="p-lg-6 p-md-12 p-pr-3  p-d-flex p-jc-between">
+      
+         <button style="color: white !important; background-color: #2529cd; width: 80px;" label="Save"
+            class="p-col-2  font-header-commen add-activity" pButton type="button"></button>
+    </div> -->
+</div>
+<!-- <p-accordion >
+    <p-accordionTab >
+        {{rowData.name}} <br>
+        {{ list[rowIndex]?.name}}
+
+    </p-accordionTab>   
+</p-accordion> -->

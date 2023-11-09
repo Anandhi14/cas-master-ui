@@ -1,0 +1,145 @@
+<div  class="p-d-flex p-jc-between p-ai-center p-mb-0" style="padding:0px 11px">
+    <div class="p-d-flex p-col-11" style="align-items: center; ">
+        <span class="font-content breadcrumb-guide-label p-mr-1 p-d-flex">
+            <span class="primaryColor "><b class="p-mr-1">GPX</b></span> |
+            <p-breadcrumb class="p-p-0 p-ml-1 breadcrumb" [model]="menuItems"></p-breadcrumb>
+
+        </span>
+    </div>
+    <div style="display: flex;align-items: center;">
+        <i class="pi pi-plus-circle p-ml-3" style="font-size: 1.5rem;color: #CFCFCF;" tooltipPosition="top"
+            pTooltip="Add"></i>
+    </div>
+</div>
+<div>
+    <p-toast [preventOpenDuplicates]="true"></p-toast>
+</div>
+<div     class="p-pr-4 p-pl-4 p-pt-2 p-pb-2 p-mt-1 p-mb-1 p-shadow-10 " style="height: 100vh;">
+    <div class="p-d-flex p-flex-wrap p-col-12  p-d-flex p-flex-column p-flex-md-row p-jc-between "
+        style="position: relative;">
+
+        <div #containerLeft class="p-lg-8 p-md-12 p-pl-0 p-pr-3  p-pt-0 p-pb-0 p-mt-3">   
+
+
+            <div class="p-col-12 p-p-1 p-d-flex p-flex-column p-flex-md-row p-ai-center">
+                <div class="p-col-6  p-p-0  p-d-flex p-flex-column p-flex-md-row p-ai-center">
+                    <div class=" p-col-4 p-p-0  font-header text-center ">Goal ID</div>
+                    <div class=" p-col-8  p-p-0">
+
+                        <div [ngStyle]="{'width':'100%'}" class="common-font-size" style="margin-left: 10px;">
+                            <input [(ngModel)]="goals.goalId" style="width: 100%;" type="text" pInputText
+                                placeholder=" Goal ID">
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="p-col-6    p-d-flex p-flex-column p-flex-md-row p-ai-center" style="margin-left:-10px;" >
+                    <div class=" p-col-4 p-p-0  font-header text-center " style="margin-left: 21px;">Metric ID</div>
+                    <div class=" p-col-8  p-p-0">
+
+                        <div [ngStyle]="{'width':'100%'}" class="common-font-size">
+                            <input [(ngModel)]="goals.metricId" style="width: 100%;" type="text" pInputText
+                                placeholder="Metrics ID">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="p-col-12 p-p-1 p-d-flex p-flex-column p-flex-md-row p-ai-center">
+                <div class="p-col-6 p-p-0  p-d-flex p-flex-column p-flex-md-row p-ai-center">
+                    <div class=" p-col-4 p-p-0 font-header text-center " style="margin-left: -1px;">Goal Setting Date</div>
+                    <div class=" p-col-4  p-p-0">
+
+                        <div [ngStyle]="{'width':'100%'}" class="common-font-size" style="margin-left: 10px;">
+                            <div [ngStyle]="{'width':'100%'}"><input class="p-inputtext" [ngStyle]="{'width':'100%'}"
+                                    type="date" name="Setting_date" [(ngModel)]="goals.goalSettingDate"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="p-col-6  p-p-0   p-d-flex p-flex-column p-flex-md-row p-ai-center" style="">
+                    <div class=" p-col-4 p-p-10  font-header text-center " style="width: 100px; margin-left:14px;">Location Name</div>
+                    <div class=" p-col-8  p-p-0">
+
+                        <div [ngStyle]="{'width':'100%'}" class="common-font-size">
+                            <input [(ngModel)]="goals.locationName" style="width: 100%;" type="text" pInputText
+                                placeholder=" Location Name">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="p-col-12 p-p-1 p-d-flex p-flex-column p-flex-md-row p-ai-center">
+                <div class="p-col-6 p-p-0  p-d-flex p-flex-column p-flex-md-row p-ai-center">
+                    <div class=" p-col-4 p-p-0  font-header text-center ">Active(Yes/No)</div>
+                    <div class=" p-col-3  p-p-0">
+                        <div class="common-font-size p-d-flex p-ai-center" style="margin-left: 10px;">
+                            <p-inputSwitch [(ngModel)]="goals.isActive"></p-inputSwitch> &nbsp; <span><b style="font-size: 15px;">Yes</b></span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="p-col-12 p-p-1 p-d-flex p-flex-column p-flex-md-row p-ai-center">
+                <div class="p-col-5 p-p-0  p-d-flex p-flex-column p-flex-md-row p-ai-center">
+                    <div class=" p-col-7 p-p-0  font-header text-center " style="font-size: 14px;">Goal Values</div>
+                    <div class=" p-col-5  p-p-0">
+
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="p-col-12 p-p-1 p-d-flex p-flex-column p-flex-md-row p-ai-center">
+                <table class="excel-style-table  ">
+                    <thead class="font-header text-center">
+                        <tr>
+                            <th>Period</th>
+                            <th>LTL</th>
+                            <th>LL</th>
+                            <th>Goal</th>
+                            <th>UL</th>
+                            <th>UTL</th>
+                        </tr>
+                    </thead>
+                    <tbody class="font-content text-center">
+                        <tr *ngFor="let goalValue of goalValues">
+                            <!-- Iterate through goalValues array -->
+                            <td>{{ goalValue.period }}</td>
+                            <td>{{ goalValue.ltl }}</td>
+                            <td>{{ goalValue.ll }}</td>
+                            <td>{{ goalValue.goal }}</td>
+                            <td>{{ goalValue.ul }}</td>
+                            <td>{{ goalValue.utl }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+    <!-- <div  class="p-lg-6 p-md-12 p-pr-3  p-d-flex p-jc-between">
+        <div class="p-col-6 p-p-0  font-header text-center p-d-flex">
+        </div>    <button style="color: white !important; background-color: #2529cd;" label="Save" 
+        class="p-col-2  font-header-commen add-activity" pButton type="button"></button></div> -->
+</div>

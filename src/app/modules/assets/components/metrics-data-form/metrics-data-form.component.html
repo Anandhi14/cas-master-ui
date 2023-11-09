@@ -1,0 +1,662 @@
+<p-toast [preventOpenDuplicates]="true"></p-toast>
+<p-confirmPopup #confirmPopup [style]="{'font-size':'11px','max-width':'300px'}"></p-confirmPopup>
+
+  
+ <div class="p-col-12 p-d-flex p-ai-center " style="padding-left: 11px;padding-right: 11px; justify-content: space-between;">
+    <span class="font-content breadcrumb-guide-label p-mr-1 p-d-flex"> 
+      <span
+      class="primaryColor "><b class="p-mr-1" [routerLink]="'/home'">GPX</b></span> | 
+  <p-breadcrumb  class="p-p-0 p-ml-1 breadcrumb"  [model]="menuItems"></p-breadcrumb>
+
+  </span>
+  <div style="display: flex; align-items: center;">
+    <i class="pi pi-plus-circle p-ml-3" style="font-size: 1.5rem; color: #CFCFCF;" tooltipPosition="top" pTooltip="Add"  *ngIf="!showPopup" (click)="onAddClick()"></i>
+  </div>
+  
+  </div>
+  <!-- [style]="{width: popupModelWidth,top:popupModelTop ,position:' absolute',left:'811px', popupModelrightSide:popupModelLeftSide}" -->
+  <p-dialog   [(visible)]="showPopup" class="popupActivity actscroll" [draggable]="false" [closable]="false" [style]="{'width':'90%'}">
+    <ng-template pTemplate="header">
+       
+        <div  class="p-d-flex p-col-12 p-flex-row p-mt-3 " style="width: 100%;">
+            <div  class="p-mr-auto p-mt-0 p-mb-0">
+                <h4  class="font-header p-m-0 text-center actdetil-header" style="display: inline-block;">
+                    <i class="pi pi-file-edit p-mr-2"></i>Select Metrics to Input
+                    Value
+                </h4>
+                <!-- <h4 *ngIf="!isEditMode" class="font-header p-m-0 text-center actdetil-header" style="display: inline-block;">
+                                       <img class="gloplaxLogo" src="../../../assets/images/3.png"  style="height:36px">
+                </h4> -->
+            </div>
+           
+            <!-- <p-checkbox *ngIf="isEditMode" name="archive" class=" p-p-0  p-mr-3 pointer Checkbox-div archive-check" [(ngModel)]="model.archive"  [binary]="true" [falseValue]="false" label="Archive" (click)="archiveChange($event)"></p-checkbox>  -->
+            
+            <!-- <div class="p-col-2 p-p-0 p-d-flex p-align-center p-jc-center ">
+            <div class="  p-p-0 font-header text-center">Active
+                <div class="  p-p-0 p-ml-2 font-header text-center "><input type="checkbox"  [(ngModel)]="Processmodel.activeProcess"> </div>
+            </div>
+        </div> -->
+            <!-- <i class="pi pi-trash p-p-0  p-mr-3 pointer" type="button" *ngIf="Processmodel.processId" (click)="CanDelete($event)"tooltipPosition="top" pTooltip="Delete"></i> -->
+         <i class="pi pi-times p-mr-0 pointer" (click)="close()"></i>
+        </div>
+    </ng-template>  
+<p-dialog header={{popupHeader}} *ngIf="selectPopup" [draggable]="false" [closable]="false" [(visible)]="selectPopup"
+    [style]="{width: popupModelWidth,top: isDesktopDevice?0:null ,position:' absolute',left:'' && popupHeader!='Attachment'&& isDesktopDevice ?popupModelrightSide:(isDesktopDevice?popupModelLeftSide:null),right:'0'}"
+    [baseZIndex]="10000" class="list-popup-dialog" [styleClass]="'list-popup-dialog1'">
+
+    <ng-template pTemplate="header">
+
+        <div class="p-col-12 p-mb-1 p-mt-1 p-d-flex p-p-0">
+            <h4 style="display: inline-block;" class="font-header p-mr-auto text-center p-mt-1 p-mb-1">
+                {{popupHeader}}
+            </h4>
+
+            <!-- <div *ngIf="popupHeader == 'metrics'"
+              class="p-col-1 p-d-flex p-jc-center tick-box" (click)="saveMultiSelect()"><i
+                  class="pi pi-check"></i></div> -->
+            <div class="p-col-1 p-d-flex p-jc-center   tick-box " (click)="confirm($event)"><i
+                    class="pi pi pi-times"></i></div>
+        </div>
+
+
+    </ng-template>
+    <p-listbox class="list-popup list-scroll" [showToggleAll]="false" [options]="options"
+        [listStyle]="{'font-size':'11px' ,'padding':'2px'}"
+        [style]="{'width':'100%','max-height':popupModelHeight,'overflow-y':'scroll','min-height':popupModelHeight,'margin-bottom':'20px'}"
+        [checkbox]="multiple" [multiple]="multiple" [filter]=" popupHeader=='Owner' ?false:true"
+        [(ngModel)]="selectedOptions" (onClick)="saveValues($event)" [optionLabel]="label">
+
+    </p-listbox>
+
+
+
+
+
+</p-dialog>
+<div #processDetailPopup class=" ">
+    <!-- <div class="p-col-12 p-p-1 p-d-flex p-flex-md-row">
+        <div class=" p-col-2 p-p-0 p-mr-1 font-header text-center">Process Master
+        </div>
+    <div class="p-pl-2 p-pr-2"><div class="headerBorder"></div></div> -->
+    <div class="p-d-flex p-flex-wrap p-col-12  p-d-flex p-flex-column p-flex-md-row p-jc-between "
+        style="position: relative; padding :0;">
+        <!-- <div class="p-col-12  p-d-flex p-flex-column p-flex-md-row">
+
+            <div class=" p-col-6 p-p-0 p-mr-1 font-header text-center" style="font-size: 14px;">Select Metrics to Input
+                Value
+            </div>
+        </div> -->
+
+        <!-- <div class="p-pl-2 p-pr-2"><div class="headerBorder"></div></div> -->
+        <div class="p-d-flex p-flex-wrap p-col-12  p-d-flex p-flex-column p-flex-md-row p-jc-between "
+            style="position: relative;">
+
+
+            <div #containerLeft class="p-lg-6 p-md-12 p-pl-0 p-pr-3  p-pt-0 p-pb-0 ">
+                <div class="p-col-12 p-p-1 p-d-flex p-flex-column p-flex-md-row">
+                    <div class=" p-col-3 p-p-0 p-mr-1 font-header text-center">Function</div>
+                    <div class=" p-col-9 p-p-0">
+
+                        <div class="p-inputgroup ">
+                            <input class="width-100-perc" type="text" [value]="MetricsFilterData?.function?.name"
+                                disabled pInputText placeholder="Select a function">
+                            <span class="p-inputgroup-addon p-p-0"
+                                (click)="selctionPopup(functionList,'function',MetricsFilterData?.function,'name')"
+                                [ngStyle]="{'background':popupHeader=='function' && selectPopup?'#2529cd':'#e9ecef'}"><i
+                                    class="pi pi-external-link externalLink"
+                                    [ngStyle]="{'color':popupHeader=='function' && selectPopup?'white':'#6c757d'}"></i></span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-p-1 p-d-flex p-flex-column p-flex-md-row">
+                    <div class=" p-col-3 p-p-0 p-mr-1 font-header text-center ">Sub Function</div>
+                    <div class=" p-col-9 p-p-0">
+                        <div class="p-inputgroup ">
+                            <input disabled class="width-100-perc" type="text"
+                                [value]="MetricsFilterData?.subFunction?.name" pInputText
+                                placeholder="Select a Sub Function">
+                            <span class="p-inputgroup-addon p-p-0"
+                                (click)="selctionPopup(subFunctionList,'subFunction',MetricsFilterData?.subFunction,'name')"
+                                [ngStyle]="{'background':popupHeader=='subFunction' && selectPopup?'#2529cd':'#e9ecef'}"><i
+                                    class="pi pi-external-link externalLink"
+                                    [ngStyle]="{'color':popupHeader=='subFunction' && selectPopup?'white':'#6c757d'}"></i></span>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12 p-p-1 p-d-flex p-flex-column p-flex-md-row">
+                    <div class=" p-col-3 p-p-0 p-mr-1 font-header text-center">Process</div>
+                    <div class=" p-col-9 p-p-0">
+
+                        <div class="p-inputgroup ">
+                            <input class="width-100-perc" type="text" [value]="MetricsFilterData?.process?.name"
+                                disabled pInputText placeholder="Select a Process">
+                            <span class="p-inputgroup-addon p-p-0"
+                                (click)="selctionPopup(ProcessList,'Process',MetricsFilterData?.subFunction,'name')"
+                                [ngStyle]="{'background':popupHeader=='Process' && selectPopup?'#2529cd':'#e9ecef'}"><i
+                                    class="pi pi-external-link externalLink"
+                                    [ngStyle]="{'color':popupHeader=='Process' && selectPopup?'white':'#6c757d'}"></i></span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div #UpstreamBox class="p-col-12 p-p-1 p-d-flex p-flex-column p-flex-md-row">
+                    <div class=" p-col-3 p-p-0 p-mr-1 font-header text-center ">Sub Process</div>
+                    <div class=" p-col-9 p-p-0">
+                        <div class="p-inputgroup ">
+                            <input disabled class="width-100-perc" type="text"
+                                [value]="MetricsFilterData?.subProcess?.name" pInputText
+                                placeholder="Select a Sub Process">
+                            <span class="p-inputgroup-addon p-p-0"
+                                (click)="selctionPopup(subProcessList,'subProcess',MetricsFilterData?.subProcess,'name')"
+                                [ngStyle]="{'background':popupHeader=='subProcess' && selectPopup?'#2529cd':'#e9ecef'}"><i
+                                    class="pi pi-external-link externalLink"
+                                    [ngStyle]="{'color':popupHeader=='subProcess' && selectPopup?'white':'#6c757d'}"></i></span>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-p-1 p-d-flex p-flex-column p-flex-md-row "
+                    style="padding-top: 0.5rem !important;">
+                    <div class=" p-col-12 p-p-0 p-d-flex font-header  text-center "> Metrics
+                    </div>
+                </div>
+                <div class="p-col-12 p-p-1 p-d-flex p-flex-column p-flex-md-row "
+                    style="padding-top: 0.5rem !important;">
+                    <div class=" p-col-12 p-p-2  headerRemove borderRemove font-header stream-box  "
+                        [ngStyle]="{'max-height':'fit-content','min-height':'50%'}">
+
+                        <div class="upstrem-depentent-box p-pt-1 ">
+
+                            <p-listbox [metaKeySelection]="false" [options]="metricsList" [checkbox]="false"
+                                [filter]="true" [multiple]="false" optionLabel="metricName"
+                                [listStyle]="{'padding':'0','font-size':'12px','max-height':'fit-content','min-height':'300px'}"
+                                [style]="{'width':'100%'}" (onChange)="onMetricsClick($event)">
+                                <ng-template let-iteam pTemplate="item">
+                                    <div class="country-item font-header " style="display:flex; max-height: 'fit-content';  white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis; 
+                          ">
+                                        <div>
+                                            <{{iteam?.group ?iteam?.group?.name :'no group'}}> | {{iteam?.metricName}}
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </p-listbox>
+                            <!-- {{Metricsmodel?.usedFor?.processName}} -->
+                            <div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class=" p-lg-6 p-md-12 p-lg-pl-3 p-pr-0  p-lg-pl-3 p-xl-pl-3 p-pt-0 p-pb-0"
+                style="transform: translate(0px, -14px);">
+
+                <div class="p-d-flex  p-flex-wrap ">
+                    <div class="p-col-12 p-p-0 ">
+
+                        <div class="p-col-12 " style="padding: 0 0.25rem !important;">
+                            <!-- <div class=" p-col-12 p-p-0 p-mr-1 p-mb-1  font-header text-center ">Matric Category</div> -->
+                            <div header="" class="card-modal">
+                                <p class="m-0 ">
+                                    <p-fieldset legend="Data Input">
+                                        <div class="p-col-12 p-pl-0   p-pr-0  p-pt-1  p-pb-0   headerRemove threeColumn potrateHeight"
+                                            style="max-height: 33vh;" [ngStyle]="{'max-height':'fit-content'}">
+                                            <div class="p-col-12 p-p-1 p-d-flex p-flex-column p-flex-md-row">
+
+                                                <div class=" p-col p-p-0  font-header ">
+                                                    <div class="p-d-flex  p-p-0 p-ai-center">
+                                                        <div class=" p-col-6 p-p-0    text-center">Reporting Period
+                                                        </div>
+                                                        <div class=" p-col-6 p-p-0   ">
+                                                            <p-dropdown class="width-100-perc"
+                                                                [(ngModel)]="dataInput.reportingPeriod" [options]=""
+                                                                optionLabel="name" [disabled]="disabledatainput">
+                                                            </p-dropdown>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="p-col p-p-0 font-header">
+                                                    <div class=" p-d-flex p-p-0 p-ai-center p-jc-center"> 
+                                                        <p class="file-max-size-para">Maximum allowed file size is <b>5MB</b></p>
+                                                    <div class=" p-d-flex p-p-0 p-ai-center p-jc-around"> 
+                                                        <div class="p-col-12 p-p-0 text-center"></div>
+                                                   
+                                                        <div class="p-col-6 p-p-0" (click)="openFileInput()" style="cursor: pointer;">
+                                                            <i class="pi pi-paperclip" style="font-size: 1rem"></i>
+                                                        
+                                                        <input type="file" #fileInput style="display: none"
+                                                            (change)="handleFileSelect($event)" [disabled]="disabledatainput" [(ngModel)]="fileAttachmentLink" id="fileAtt">
+                                                        <!-- Add a hidden download link with an ID -->
+                                                       
+                                                    </div>
+                                                    <div class="p-col-6 p-p-0 p-ml-1">
+                                                        <a [href]="this.dataInput.Attachment" target="_blank" *ngIf="this.dataInput.Attachment?.length"
+                                                                id="downloadLink"><i class="pi pi-link" style="font-size: 1rem"  ></i> </a> </div>
+                                                        </div>
+                                                </div>
+                                                 
+                                                <!--  -->
+                                                       
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="p-col-12 p-p-1 p-d-flex p-flex-column p-flex-md-row">
+
+                                            <div class=" p-col p-p-0  font-header ">
+                                                <div class="p-d-flex  p-p-0 p-ai-center">
+                                                    <div class=" p-col-6 p-p-0    text-center">Reported Value</div>
+                                                    <div class=" p-col-6 p-p-0   ">
+                                                        <input class="width-100-perc" type="text"
+                                                            [(ngModel)]="dataInput.reportedValue" pInputText
+                                                            placeholder="ReportedValue" [disabled]="disabledatainput">
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class=" p-col p-p-0  font-header ">
+                                                <div class="p-d-flex  p-p-0 p-ai-center">
+                                                    <div class=" p-col-6 p-p-0    text-center">Reported Trend</div>
+                                                    <div class=" p-col-6 p-p-0   ">
+                                                        <p-dropdown class="width-100-perc"
+                                                            [(ngModel)]="dataInput.reportedTrend"
+                                                            [options]="reportingTrendList" optionLabel="name"  [disabled]="disabledatainput">
+                                                        </p-dropdown>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="p-col-12 p-p-1 p-d-flex p-flex-column p-flex-md-row" >
+
+                                            <div class=" p-col p-p-0  font-header ">
+                                                <div class="p-d-flex  p-p-0 p-ai-center">
+                                                    <div class=" p-col-6 p-p-0    text-center">Inference | Comment</div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="p-col-12 p-p-1 p-d-flex p-flex-column p-flex-md-row">
+
+                                            <!-- <div class=" p-col-3 p-p-0  font-header ">
+                                <div class=" p-p-0 p-ai-center">
+                               
+                                            <div class=" p-col-12 p-p-0   " style="display: flex;
+                                            align-items: center;
+                                            justify-content: space-around;
+                                            font-size: 16px !important;" >
+                                                <i class="fa-solid fa-users "></i>
+                                                <i class="fa-solid fa-arrows-rotate"></i>
+                                                <i class="fa-brands fa-500px"></i>
+                                                <i class="fa-solid fa-database"></i>
+                                                <i class="fa-regular fa-lightbulb"></i>
+                                            </div>
+                                            <div class=" p-col-12 p-p-0   " style="display: flex;
+                                            align-items: center;
+                                            justify-content: space-around;
+                                            font-size: 16px !important;" >
+                                           //radiobuttons here 
+                                           //vertically align not horizintally i.e for each icon three options below one another for  each icon user can pick only one for one item  
+                                            </div>
+            
+                                </div>
+                            </div> -->
+                            <div class="p-col-1 ball-group " style="padding: 0.9rem 0; width: 4%;margin-top: -1px;">
+                                <div class="ball red"></div>
+                                <div class="ball yellow"></div>
+                                <div class="ball green"></div>
+                            </div>
+                            
+                            <div class="p-col-3 p-p-0 font-header">
+                                <div class="p-p-0 p-ai-center">
+                                    <div  style="display: flex; align-items: center; font-size: 12px !important;gap:4px;margin: 1px; 
+                                    ">
+                                        <div class="p-col-2 p-p-0" style="text-align: center; font-size: 16px !important;margin-top: -4px;" *ngIf="showManPower">
+                                            <div class="p-d-flex">
+                                                <i class="fa-solid fa-users"></i>
+                                            </div>
+                                        </div>
+                                        <div class="p-col-2 p-p-0" style=" font-size: 16px !important;margin-top: -3.5px;" *ngIf="showProcess">
+                                            <div class="p-d-flex">
+                                                <i class="fa-solid fa-arrows-rotate"></i>
+                                            </div>
+                                        </div>
+                                        <div class="p-col-2 p-p-0" style=" font-size: 16px !important;margin-top: -4px;"  *ngIf="showTech">
+                                            <div class="p-d-flex">
+                                                <i class="fa-brands fa-500px"></i>
+                                            </div>
+                                        </div>
+                                        <div class="p-col-2 p-p-0" style="text-align: center; font-size: 16px !important;margin-top: -4px;"  *ngIf="showData">
+                                            <div class="p-d-flex">
+                                                <i class="fa-solid fa-database"></i>
+                                            </div>
+                                        </div>
+                                        <div class="p-col-2 p-p-0" style="text-align: center; font-size: 16px !important; margin-top:-4px;margin-left:-1px;" *ngIf="showInnovation">
+                                            <div class="p-d-flex" >
+                                                <i class="fa-regular fa-lightbulb"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="p-col-12 p-p-0" style="display: flex; align-items: center; font-size: 16px !important;gap: 2px; margin-top: -5px;">
+                                        <div class="p-col-2 " style="text-align: center; font-size: 16px !important; display: flex;
+                                        flex-direction: column;
+                                        align-items: center; gap: 3px;" *ngIf="showManPower">
+                                            <!-- Radio buttons for the first icon -->
+                                            <div class="p-d-flex">
+                                                <input type="radio" name="manPowerColor" [(ngModel)]="manPowerColor" id="redIcon_manPower" [value]='{enablerId:2,colorId: 13,colorName:"Red",bgColorCode: "#FF0000"}'>
+                                            </div>
+                                            <div class="p-d-flex">
+                                                <input type="radio" name="manPowerColor" [(ngModel)]="manPowerColor" id="yellowIcon_manPower" [value]='{enablerId:2,colorId:14,colorName:"Yellow",bgColorCode: "#FFFF00"}'>
+                                            </div>
+                                            <div class="p-d-flex">
+                                                <input type="radio" name="manPowerColor" [(ngModel)]="manPowerColor" id="greenIcon_manPower"  [value]='{enablerId:2,colorId:15,colorName:"Green",bgColorCode: "#008000"}'>
+                                            </div>
+                                        </div>
+                                        <div class="p-col-2 "  style="text-align: center; font-size: 16px !important;   display: flex;
+                                        flex-direction: column;
+                                        align-items: center; gap: 3px;" *ngIf="showProcess">
+                                            <!-- Radio buttons for the 2nd icon -->
+                                            <div class="p-d-flex">
+                                                <input type="radio" name="processColor" [(ngModel)]="processColor" id="redIcon_process" [value]='{enablerId:3,colorId: 13,colorName:"Red",bgColorCode: "#FF0000"}'>
+                                            </div>
+                                            <div class="p-d-flex">
+                                                <input type="radio" name="processColor" [(ngModel)]="processColor" id="yellowIcon_process" [value]='{enablerId:3,colorId:14,colorName:"Yellow",bgColorCode: "#FFFF00"}'>
+                                            </div>
+                                            <div class="p-d-flex">
+                                                <input type="radio" name="processColor" [(ngModel)]="processColor" id="greenIcon_process"  [value]='{enablerId:3,colorId:15,colorName:"Green",bgColorCode: "#008000"}'>
+                                            </div>
+                                        </div>
+                                        <div class="p-col-2 "  style="text-align: center; font-size: 16px !important;     display: flex;
+                                        flex-direction: column;
+                                        align-items: center; gap: 3px;" *ngIf="showTech">
+                                            <!-- Radio buttons for the third icon -->
+                                            <div class="p-d-flex">
+                                                <input type="radio" name="techColor" [(ngModel)]="techColor" id="redIcon_tech" [value]='{enablerId:4,colorId: 13,colorName:"Red",bgColorCode: "#FF0000"}'>
+                                            </div>
+                                            <div class="p-d-flex">
+                                                <input type="radio" name="techColor" [(ngModel)]="techColor" id="yellowIcon_tech" [value]='{enablerId:4,colorId:14,colorName:"Yellow",bgColorCode: "#FFFF00"}'>
+                                            </div>
+                                            <div class="p-d-flex">
+                                                <input type="radio" name="techColor" [(ngModel)]="techColor" id="greenIcon_tech" [value]='{enablerId:4,colorId:15,colorName:"Green",bgColorCode: "#008000"}'>
+                                            </div>
+                                        </div>
+                                        <div class="p-col-2 "  style="text-align: center; font-size: 16px !important;      display: flex;
+                                        flex-direction: column;
+                                        align-items: center; gap: 3px;"  *ngIf="showData">
+                                            <!-- Radio buttons for the fourth icon -->
+                                            <div class="p-d-flex">
+                                                <input type="radio" name="dataColor" [(ngModel)]="dataColor" id="redIcon_data" [value]='{enablerId:5,colorId: 13,colorName:"Red",bgColorCode: "#FF0000"}'>
+                                            </div>
+                                            <div class="p-d-flex">
+                                                <input type="radio" name="dataColor" [(ngModel)]="dataColor" id="yellowIcon_data"[value]='{enablerId:5,colorId:14,colorName:"Yellow",bgColorCode: "#FFFF00"}'>
+                                            </div>
+                                            <div class="p-d-flex">
+                                                <input type="radio" name="dataColor" [(ngModel)]="dataColor" id="greenIcon_data" [value]='{enablerId:5,colorId:15,colorName:"Green",bgColorCode: "#008000"}'>
+                                            </div>
+                                        </div>
+                                        <div class="p-col-2 "  style="text-align: center; font-size: 16px !important;       display: flex;
+                                        flex-direction: column;
+                                        align-items: center; gap: 3px;"  *ngIf="showInnovation">
+                                            <!-- Radio buttons for the fifth icon -->
+                                            <div class="p-d-flex">
+                                                <input type="radio" name="innovationColor" [(ngModel)]="innovationColor" id="redIcon_innovation" [value]='{enablerId:6,colorId: 13,colorName:"Red",bgColorCode: "#FF0000"}'>
+                                            </div>
+                                            <div class="p-d-flex">
+                                                <input type="radio" name="innovationColor" [(ngModel)]="innovationColor" id="yellowIcon_innovation"[value]='{enablerId:6,colorId:14,colorName:"Yellow",bgColorCode: "#FFFF00"}'>
+                                            </div>
+                                            <div class="p-d-flex">
+                                                <input type="radio" name="innovationColor" [(ngModel)]="innovationColor" id="greenIcon_innovation"  [value]='{enablerId:6,colorId:15,colorName:"Green",bgColorCode: "#008000"}'>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class=" p-col-8 p-p-0  font-header ">
+                                <div class="p-d-flex  p-p-0 p-ai-center">
+                                    <div class=" p-col-12 p-p-0    text-center" > <input  [(ngModel)]="dataInput.comment" class="width-100-perc" type="text" style="width: 100% !important; height: 75px;"
+                                        pInputText placeholder="Comment" [disabled]="disabledatainput"></div>
+                                            <!-- <div class=" p-col- p-p-0   " >
+                                                <p-dropdown class="width-100-perc" [disabled]="true"   [options]="reportingTrendList" optionLabel="name" >
+                                                </p-dropdown>
+                                            </div> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </p-fieldset>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>          
+            <div class="p-col-12  " style="padding: 0 0.25rem !important;">
+                <!-- <div class=" p-col-12 p-p-0 p-mr-1 p-mb-1  font-header text-center ">Impect Area</div> -->
+                <div header="" class="card-modal">
+                    <p class="m-0 ">
+                <p-fieldset legend="Reference">
+                <div class="p-col-12 p-pl-0   p-pr-0  p-pt-1  p-pb-0    headerRemove threeColumn potrateHeight" style="max-height: 33vh;" [ngStyle]="{'max-height':'fit-content'}">
+                    <div class="p-col-12 p-p-1 p-d-flex p-flex-column p-flex-md-row">
+                        <div class=" p-col-3 p-p-0 p-mr-1 font-header text-center ">Calculation | Formula</div>
+                        <div class=" p-col-9 p-p-0">
+                            <div class="p-inputgroup ">
+                                <input   [(ngModel)]="RefrenceObj.calculation" disabled class="width-100-perc" type="text" 
+                                    pInputText placeholder="Formula">
+                               
+        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-col-12 p-p-1 p-d-flex  p-flex-md-row p-ai-center">
+                        <div class=" p-col-5 p-p-0  font-header ">
+                        <div class="p-d-flex  p-p-0 p-ai-center">
+                        <div class=" p-col-10 p-p-0 font-header text-center">Automated Source | Calculation 
+                        </div>
+                        <span class=" p-col-1   font-header text-center "><input disabled [(ngModel)]="RefrenceObj.autoCalculation" type="checkbox" > </span>
+                    </div>
+                    </div>
+                     
+                        <div class=" p-col-6 p-p-0  font-header ">
+                            <div class="p-d-flex  p-p-0 p-ai-center">
+                                <div class=" p-col-6 p-p-0    text-center" >Reporting Format</div>
+                                        <div class=" p-col-6 p-p-0   " >
+                                            <p-dropdown class="width-100-perc"  [(ngModel)]="RefrenceObj.reportingFormat"  [disabled]="true" [options]="reportingformatsList" optionLabel="name"  >
+                                            </p-dropdown>
+                
+                                        </div>
+        
+                            </div>
+                        </div>
+                        <div class=" p-col-1 p-p-0  font-header ">
+                            <div class="p-d-flex  p-p-0 p-ai-center">
+                                <div class=" p-col-3 p-p-0  font-header text-center " >#</div>
+                                <div class=" p-col-9 p-p-0">
+                                    <div class="p-inputgroup ">
+                                        <input class="width-100-perc" type="text" 
+                                        disabled   pInputText placeholder=""  [(ngModel)]="RefrenceObj.hashValue"   >
+                                       
+                
+                                    </div>
+                                </div>
+        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-col-12 p-p-1 p-d-flex p-flex-column p-flex-md-row">
+ 
+                        <div class=" p-col p-p-0  font-header ">
+                            <div class="p-d-flex  p-p-0 p-ai-center">
+                                <div class=" p-col-6 p-p-0    text-center" >Reporting Frequency</div>
+                                        <div class=" p-col-6 p-p-0   " >
+                                            <p-dropdown class="width-100-perc" [disabled]="true" [(ngModel)]="RefrenceObj.reportingFrequency" [options]="reportingfrequenciesList" optionLabel="name" >
+                                            </p-dropdown>
+                
+                                        </div>
+        
+                            </div>
+                        </div>
+                        <div class=" p-col p-p-0  font-header ">
+                            <div class="p-d-flex  p-p-0 p-ai-center">
+                                <div class=" p-col-6 p-p-0    text-center" >Calculation Currency</div>
+                                        <div class=" p-col-6 p-p-0   " >
+                                            <p-dropdown class="width-100-perc" [disabled]="true"   [(ngModel)]="RefrenceObj.calculationMethod"  [options]="calculationcurrenciesList" optionLabel="name" >
+                                            </p-dropdown>
+                
+                                        </div>
+        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-col-12 p-p-1 p-d-flex p-flex-column p-flex-md-row">
+ 
+                        <div class=" p-col-3 p-p-0  font-header ">
+                            <div class="p-d-flex  p-p-0 p-ai-center">
+                                <div class=" p-col-12 p-p-0    text-center" >Goal Limits</div>
+                                    
+        
+                            </div>
+                        </div>
+                        <div class=" p-col-3 p-p-0  font-header ">
+                            <div class="p-d-flex  p-p-0 p-ai-center p-jc-end" style="padding-right: 1rem !important;" >
+                                <div class=" p-col-7 p-p-0    text-center"   >No Goals</div>
+                                      
+                                            <span class="   font-header text-center "><input disabled [(ngModel)]="RefrenceObj.goalcheck" type="checkbox" > </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-col-12 p-p-1 p-d-flex p-flex-column p-flex-md-row"  >
+                        <p-table [value]="data" style="width: 100% ; background: transparent;border-collapse: collapse;border: 1px solid; "  >
+                            <ng-template pTemplate="header" style="background: transparent; border:1px solid black ">
+                              <tr  class="font-header">
+                                <th style="background: transparent; border:1px solid black; border-left-style: none; border-top-style: none ; padding:5px;text-align: center !important;" >LTL</th>
+                                <th style="background: transparent; border:1px solid black; border-top-style: none ; padding:5px;text-align: center !important; ">LL</th>
+                                <th style="background: transparent; border:1px solid black; border-top-style: none ; padding:5px;text-align: center !important; ">GOAL</th>
+                                <th style="background: transparent; border:1px solid black;  border-top-style: none ;padding:5px;text-align: center !important; ">UL</th>
+                                <th style="background: transparent; border:1px solid black; border-top-style: none ; border-right-style: none; padding:5px;text-align: center !important; ">UTL</th>
+                              </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex" style="font-size: 12px;">
+                              <tr >
+                                <td   style="background: transparent; border:1px solid black ;padding:5px; border-left-style: none; border-bottom-style: none ;height: 25px;">
+                                  <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                      <!-- <input pInputText type="text" [(ngModel)]="rowData.LL"> -->
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                      {{RefrenceObj.lowerThreshold }}
+                                    </ng-template>
+                                  </p-cellEditor>
+                                </td>
+                                <td  style="background: transparent; border:1px solid black ;padding:5px; border-bottom-style: none ;height: 25px;">
+                                  <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                      <!-- <input pInputText type="text" [(ngModel)]="rowData.LL"> -->
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                      {{ RefrenceObj.LL }}
+                                    </ng-template>
+                                  </p-cellEditor>
+                                </td>
+                                <td  style="background: transparent; border:1px solid black ;padding:5px;border-bottom-style: none ;height: 25px; ">
+                                  <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                      <!-- <input pInputText type="text" [(ngModel)]="rowData.GOAL"> -->
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                      {{RefrenceObj.target }}
+                                    </ng-template>
+                                  </p-cellEditor>
+                                </td>
+                                <td  style="background: transparent; border:1px solid black ;padding:5px;border-bottom-style: none ;height: 25px;">
+                                  <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                      <!-- <input pInputText type="text" [(ngModel)]="rowData.UL"> -->
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                      {{ RefrenceObj.UL }}
+                                    </ng-template>
+                                  </p-cellEditor>
+                                </td>
+                                <td  style="background: transparent; border:1px solid black ;padding:5px;border-bottom-style: none ;border-right-style: none ;height: 25px;">
+                                  <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                      <!-- <input pInputText type="text" [(ngModel)]=" rowData.UTL"> -->
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{ RefrenceObj.upperThreshold }}
+                                    </ng-template>
+                                  </p-cellEditor>
+                                </td>
+                              </tr>
+                            </ng-template>
+                          </p-table>
+                          
+                    </div>
+                </div>
+                </p-fieldset>
+                    </p>
+                </div>
+       
+  
+    </div>
+        </div>
+   
+    </div>
+    <div  class="p-col-12 p-p-1 p-d-flex p-flex-column p-flex-md-row" style="padding-top: 0px !important;">
+        <div  class="p-lg-6 p-md-12 p-pr-3  p-d-flex p-jc-between">
+            <div class="p-col-6 p-p-0  font-header text-center p-d-flex">
+            </div>    <button style="color: white !important; background-color: #2529cd;" label="Save" 
+            class="p-col-2  font-header-commen add-activity" pButton type="button" (click)="saveDataEntryForm()"></button></div></div>
+    </div>
+    <!-- <app-loader *ngIf="loader"></app-loader> -->
+
+</div>
+</p-dialog>
+
+<app-loader *ngIf="loader"></app-loader>
+<div class="min-height-container">
+
+ <p-table [value]="allGuageMetrics"  [paginator]="true" [responsive]="true"  [rows]="9" responsiveLayout="scroll" styleClass="p-datatable-striped w-100">
+    <ng-template pTemplate="header" style="font-size: 10px !important;">
+      <tr class="red" style="width: 100% !important;" >
+        <th class=" font-header p-text-center">id</th>
+        <th class=" font-header p-text-center">Assosiated With</th>
+        <th class=" font-header p-text-center">reported Trend</th>
+        <!-- <th class=" font-header">reportingPeriod</th> -->
+        <th class=" font-header p-text-center">reportedValue</th>
+        <th class=" font-header p-text-center">comment</th>
+        <th class=" font-header  p-text-center">attachment Name</th>
+    
+  
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex"   class="p-p-0 p-m-0 ">
+        <tr>
+         <td class="font-content">{{rowData.id}}</td>
+          <td class="font-content">{{rowData.associatedWith.metricName}}</td>
+          <td class="font-content">{{rowData.reportingTrend.name}}</td>
+          <!-- <td class="font-content">{{rowData.reportingPeriod.name? rowData.reportingPeriod.name :'null'}}</td> -->
+          <td class="font-content">{{rowData.reportedValue}}</td>
+          <td class="font-content">{{rowData.comment}}</td>
+          <td class="font-content">{{rowData.attachmentName}}<td>
+        </tr>
+      </ng-template>
+</p-table>
+</div>

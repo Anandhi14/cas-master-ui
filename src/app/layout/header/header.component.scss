@@ -1,0 +1,136 @@
+.header{
+    height: 70px;;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 11px;
+    padding-right: 11px;
+    // padding-left: 18px;
+    // background-color: #ffffff;
+}
+.logoHeader{
+    display: flex;
+    align-items: left;
+}
+.gloplaxLogo{
+    width: 50%;
+    padding-top: 20px;
+    padding-bottom: 14px;
+   
+
+}
+.loginButton{
+    background: #ee7624;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    color:white;
+    width:5rem;
+    cursor: pointer;
+}
+.loginButton:hover{
+  background:   #65617d
+}
+.hamburger {
+    width: 20px;
+    height: 30px;
+    margin-right: 7px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding-top: 8px;
+  }
+  /* icon */
+  #nav-icon3 {
+    width: 43px;
+    height: 20px;
+    position: relative;
+
+    cursor: pointer;
+  }
+  
+  #nav-icon3 span {
+    display: block;
+    position: absolute;
+    height: 0.15rem;
+    margin-left: 2rem;
+    width: 100%;
+    background: #616161;
+ 
+    opacity: 1;
+    left: 0;
+ 
+  }
+  
+  .menu-link {
+    color: #2559CD !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: Montserrat;
+    font-size: 12px;
+    padding-top: 20px;
+    padding-bottom: 14px;
+}
+  #nav-icon3 span:nth-child(2), #nav-icon3 span:nth-child(1) {
+    top: 0px;
+    left: 50%;
+    width: 50%;
+  }
+  
+  #nav-icon3 span:nth-child(3), #nav-icon3 span:nth-child(4)  {
+    top: 6px;
+  }
+  
+  #nav-icon3 span:nth-child(5),#nav-icon3 span:nth-child(6) {
+    top: 12px;
+    width: 50%;
+  }
+  .header-right{
+    display: flex;
+    gap: 18px;
+  }
+  .primaryColor{
+  color: blue ;
+  font-weight: bold;
+  cursor: pointer;
+  }
+
+
+  @media (max-width:1024px ) {
+    .header{
+        height: 50px !important;
+    }
+  }
+
+
+  ::ng-deep .p-tooltip .p-tooltip-text {
+    background: #30477a !important;
+  
+    font-size: 11px !important;
+  }
+  ::ng-deep .p-breadcrumb{
+    padding:0 !important;
+    border:none !important;
+    font-size: 0.75rem !important;
+  }
+  ::ng-deep .headerComponent .pi-chevron-right:before {
+    content: "|" !important;
+ 
+  
+   
+}
+.breadcrumb{
+  cursor:pointer;
+}
+
+
+  
+::ng-deep .p-breadcrumb ul li.p-breadcrumb-chevron:before{
+  content: "|";
+  position: relative;
+  top: -3px;
+  left: 0px;
+  font-size: 13px;
+  opacity: 1;
+  color: black;
+}
+  
